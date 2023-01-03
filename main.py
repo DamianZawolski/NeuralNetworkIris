@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 
-
 class SiecNeuronowa:
     def __init__(self, uczace, liczba_neuronow_w_warstwie_ukrytej=4):
         np.random.seed(11)
