@@ -36,8 +36,17 @@ class PDF(FPDF):
         self.set_font('Arial', 'B', 10)
         self.set_text_color(0, 0, 0)
         self.multi_cell(w=190.0, h=10.0, align='C', txt=f"Wykresy dla seeda generatora liczb losowych równego 11", border=0)
+        self.multi_cell(w=190.0, h=10.0, align='C', txt=f"\nPonizej znajduje sie wykres porownujacy sredni blad e dla sieci uczonych zbiorem testowym od 1 do 100 razy, wspolczynnik uczenia wynosi 0,3",
+                        border=0)
         self.image(f"Wykres błędów testowych.png", link='', type='',w=185, h=125)
+        self.set_xy(10.0, 1625)
+        self.multi_cell(w=190.0, h=10.0, align='C',
+                        txt=f"\nPonizej znajduje sie wykres pokazujacy procent prawidlowo sklasyfikowanych kwiatow ze zbioru testujacego do ilosci iteracji nauczania zbiorem uczacym (od 1 do 100 razy), wspolczynnik uczenia wynosi 0,3",
+                        border=0)
         self.image(f"Wykres prawidłowych klasyfikacji.png", link='', type='',w=185, h=125)
+        self.set_xy(10.0, 1625)
+        self.multi_cell(w=190.0, h=10.0, align='C',
+                        txt=f"\nPonizej znajduje sie wykres porownujacy sredni blad e dla sieci uczonych zbiorem testowym 3-krotnie, wspolczynnik uczenia wynosi miedzy 0,05 a 2,5 w odstepach co 0,05",
+                        border=0)
         self.image(f"Współczynniki uczenia- wykres błędów testowych.png", link='', type='',w=185, h=125)
-        self.image(f"Współczynniki uczenia- wykres prawidłowych klasyfikacji.png", link='', type='',w=185, h=125)
 
