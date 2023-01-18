@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from pdf import *
 
 
+
 class SiecNeuronowa:
     def __init__(self, uczace, seed_generatora_losowego, liczba_neuronow_w_warstwie_ukrytej=4):
         np.random.seed(seed_generatora_losowego)
