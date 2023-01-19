@@ -37,16 +37,12 @@ class SiecNeuronowa:
 
     def przygotowanie_danych(self, dane):
 
-        # 3 neurony wyjściowe ponieważ mamy 3 gatunki kwiatów
-        dane["J1"] = (dane["Gatunek"] == "Iris-setosa") * 1
-        dane["J2"] = (dane["Gatunek"] == "Iris-versicolor") * 1
-        dane["J3"] = (dane["Gatunek"] == "Iris-virginica") * 1
-        dane = dane.drop("Gatunek", 1)  # Usuwanie kolumny z gatunkami
         # Standaryzacja/ normalizacja
         for kolumna in dane.columns[0:4]:
             srednia = sum(dane[kolumna]) / dane.shape[0]
             dane[kolumna] = dane[kolumna] - srednia
             dane[kolumna] = dane[kolumna] / dane[kolumna].max()
+
         return dane
 
     # Trenowanie

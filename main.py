@@ -119,7 +119,6 @@ def create_pdf():
 
     pdf.set_font('DejaVu', '', 14)
     pdf.add_page()
-    pdf.lines()
     pdf.info(procent1, blad_testowy1, wspolczynnik_uczenia, lista_bledow)
     pdf.set_author('Damian Zawolski')
     pdf.output(f"raport.pdf", 'F')

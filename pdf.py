@@ -18,29 +18,30 @@ class PDF(FPDF):
         self.set_font('DejaVu', '', 12)
         self.multi_cell(w=190.0, h=12.0, align='C', txt=f"(Wyniki po trzykrotnym przejściu przez zbiór uczący).",
                         border=0)
-        self.multi_cell(w=190.0, h=12.0, align='C', txt=f"\nGraf przedstawiający finalne wagi w strukturze sieci:",
+        self.set_font('DejaVu-Bold', '', 12)
+        self.multi_cell(w=190.0, h=12.0, align='C', txt=f"Graf przedstawiający finalne wagi w strukturze sieci:",
                         border=0)
-
+        self.set_font('DejaVu', '', 12)
         self.image(f"graf.png", link='', type='', w=200, h=200)
         self.multi_cell(w=190.0, h=12.0, align='C', txt=f"\nWspółczynnik uczenia wynosił {wspolczynnik_uczenia}.",
                         border=0)
         self.multi_cell(w=190.0, h=12.0, align='C', txt=f"Prawidłowo zidentyfikowano ({procent1}% kwiatów).",
                         border=0)
-        self.multi_cell(w=190.0, h=12.0, align='C', txt=f"Błąd kwadratowy wyniósł {round(blad_testowy1, 2)}%.",
+        self.multi_cell(w=190.0, h=12.0, align='C', txt=f"Średni błąd kwadratowy wyniósł {round(blad_testowy1, 2)}%.",
                         border=0)
-        self.set_font('DejaVu-Bold', '', 12)
+        self.set_font('DejaVu-Bold', '', 14)
         self.set_text_color(0, 0, 0)
-        self.multi_cell(w=190.0, h=10.0, align='C', txt=f"Uśrednione wyniki z badań na 10 seedach (seedy od 1 do 10).",
+        self.multi_cell(w=190.0, h=10.0, align='C', txt=f"\nUśrednione wyniki z badań na 10 seedach (seedy od 1 do 10).",
                         border=0)
-        self.set_font('DejaVu', '', 10)
+        self.set_font('DejaVu', '', 12)
         self.multi_cell(w=190.0, h=10.0, align='C',
-                        txt=f"\nPoniżej znajduje się wykres porównujący średni błąd e dla sieci uczonych zbiorem "
+                        txt=f"Poniżej znajduje się wykres porównujący średni błąd e dla sieci uczonych zbiorem "
                             f"testowym od 1 do 100 razy, współczynnik uczenia wynosi 0,3.",
                         border=0)
         self.image(f"Wykres błędów testowych.png", link='', type='', w=185, h=125)
         self.set_xy(10.0, 1625)
         self.multi_cell(w=190.0, h=10.0, align='C',
-                        txt=f"\nPoniżej znajduje się wykres pokazujący procent prawidłowo sklasyfikowanych kwaitów ze "
+                        txt=f"\nPoniżej znajduje się wykres pokazujący procent prawidłowo sklasyfikowanych kwiatów ze "
                             f"zbioru testującego do ilości iteracji nauczania zbiorem uczącym (od 1 do 100 razy), "
                             f"współczynnik uczenia wynosi 0,3.",
                         border=0)
