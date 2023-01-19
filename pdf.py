@@ -2,7 +2,6 @@ from fpdf import FPDF
 from PIL import Image
 from datetime import datetime
 
-
 class PDF(FPDF):
     def lines(self):
         self.rect(5.0, 5.0, 200.0, 287.0)
