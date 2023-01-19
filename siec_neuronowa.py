@@ -57,10 +57,8 @@ class SiecNeuronowa:
 
     # Trenowanie
     def uczenie(self, liczba_iteracji, wspolczynnik_uczenia):
-        e = 0
         for _ in range(liczba_iteracji):
             y = self.przekanazanie_danych_do_warstwy_wyjsciowej()
-            e = 0.5 * np.power((y - self.d), 2)
             self.propagacja_wsteczna(y)
             aktualizacja_warstwy_ukrytej = wspolczynnik_uczenia * self.v.T.dot(self.delta_y)
             aktualizajca_warstwy_wejsciowej = wspolczynnik_uczenia * self.x.T.dot(self.delta_v)
@@ -68,7 +66,6 @@ class SiecNeuronowa:
             self.w2 += aktualizacja_warstwy_ukrytej
             self.w1 += aktualizajca_warstwy_wejsciowej
 
-        # print(f"Błąd po {liczba_iteracji} iteracjach wynosi {np.sum(e)}")
         # print("Finalne wagi wektorów pomiedzy wejściową a ukrytą")
         # print(self.w1)
         # print("Finalne wagi wektorów pomiedzy ukrytą a wyjściową")
@@ -97,10 +94,6 @@ class SiecNeuronowa:
     def delta_warstwy_ukrytej(self):
         "aktualizacja zmiennej delta_v"
         self.delta_v = (self.delta_y.dot(self.w2.T)) * (self.pochodna_sigmoid(self.v))
-
-    def delta_warstwy_wejsciowej(self):
-        "aktualizacja zmiennej delta_x1"
-        self.delta_x = np.multiply(self.pochodna_sigmoid(self.x), self.delta_x.dot(self.w1.T))
 
     def predykcja(self, test):
         "odczytanie danych z pliku"

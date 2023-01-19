@@ -1,5 +1,6 @@
 from fpdf import FPDF
 from PIL import Image
+from datetime import datetime
 
 
 class PDF(FPDF):
@@ -15,6 +16,10 @@ class PDF(FPDF):
         self.set_font('DejaVu-Bold', '', 26)
         self.set_text_color(0, 0, 0)
         self.multi_cell(w=210.0, h=20.0, align='C', txt=f"\nWyniki klasyfikacji irysów", border=0)
+        data_czas = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.set_font('DejaVu', '', 10)
+        self.multi_cell(w=190.0, h=12.0, align='C', txt=f"Damian Zawolski {data_czas}",
+                        border=0)
         self.set_font('DejaVu', '', 12)
         self.multi_cell(w=190.0, h=12.0, align='C', txt=f"(Wyniki po trzykrotnym przejściu przez zbiór uczący).",
                         border=0)

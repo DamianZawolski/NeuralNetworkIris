@@ -64,7 +64,6 @@ ax.set_title("Średni błąd testowy w zależności od ilości przejść przez c
 plt.savefig('Wykres błędów testowych.png')
 plt.show()
 
-print(procenty)
 _, ax = plt.subplots(1)
 ax.scatter(x, procenty, label='Dokładność wyrażona w procentach', color="darkviolet")
 fig = plt.gcf()
