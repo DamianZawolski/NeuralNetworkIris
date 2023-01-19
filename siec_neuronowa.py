@@ -24,7 +24,7 @@ class SiecNeuronowa:
         self.w1 = 2 * np.random.random(
             (liczba_neuronow_w_warstwie_wejsciowej, liczba_neuronow_w_warstwie_ukrytej)) - 1
 
-        "początkowo zera, później różnica względem poprzednich x1, wektor 4x1"
+        "początkowo zera, później różnica względem poprzednich x, wektor 4x1"
         self.delta_x = np.zeros(
             (liczba_neuronow_w_warstwie_wejsciowej, liczba_neuronow_w_warstwie_ukrytej))
         "wagi pomiędzy warstwą ukrytą, a wyjściową losowe wartości pomiędzy -1 a 1, 3 kolumny i 4 wiersze"
@@ -60,11 +60,11 @@ class SiecNeuronowa:
         for _ in range(liczba_iteracji):
             y = self.przekanazanie_danych_do_warstwy_wyjsciowej()
             self.propagacja_wsteczna(y)
-            aktualizacja_warstwy_ukrytej = wspolczynnik_uczenia * self.v.T.dot(self.delta_y)
-            aktualizajca_warstwy_wejsciowej = wspolczynnik_uczenia * self.x.T.dot(self.delta_v)
+            aktualizacja_wag_ukryta_wyjsciowa = wspolczynnik_uczenia * self.v.T.dot(self.delta_y)
+            aktualizacja_wag_wejsciowa_ukryta = wspolczynnik_uczenia * self.x.T.dot(self.delta_v)
 
-            self.w2 += aktualizacja_warstwy_ukrytej
-            self.w1 += aktualizajca_warstwy_wejsciowej
+            self.w2 += aktualizacja_wag_ukryta_wyjsciowa
+            self.w1 += aktualizacja_wag_wejsciowa_ukryta
 
         # print("Finalne wagi wektorów pomiedzy wejściową a ukrytą")
         # print(self.w1)
